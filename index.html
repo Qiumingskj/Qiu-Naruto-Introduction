@@ -1,72 +1,221 @@
 <!DOCTYPE HTML>
 <html>
 <head>	    
-<title>秋ナルト个人主页</title>
+<title>&#9924;秋ナルト 个人主页&#9924;</title>
 <meta name="keywords" content="我的个人主页">
 <meta name="description" content="我的个人主页 ">
+        <script src="js/rainyday.min.js"></script>
+        <script>
+            function run() {
+                var image = document.getElementById('background');
+                image.onload = function() {
+                    var engine = new RainyDay({
+                        image: this,
+                        gravityAngle: Math.PI / 9
+                    });
+                    engine.trail = engine.TRAIL_SMUDGE;
+                    engine.rain([ [1, 0, 1000], [3, 3, 1] ], 100);
+                };
+                image.crossOrigin = 'anonymous';
+                image.src = 'img/VuX2Nf0.jpg';
+
+                // hide info container
+                document.getElementById('infobox').children[0].style.visibility = 'visible';
+                setTimeout(function(){
+                    // remove inline style -otherwise the hover effect would not be effective
+                    document.getElementById('infobox').children[0].style.visibility = '';
+                }, 5000);
+           }
+        </script>
+	<!--[if IE]>
+		<script src="http://libs.useso.com/js/html5shiv/3.7/html5shiv.min.js"></script>
+	<![endif]-->
 		<meta charset="utf-8" />
+    		<link rel="stylesheet" href="./static/APlayer-1.10.1/dist/APlayer.min.css">
 		<link href="images/head_portrait.jpg" mce_href="images/head_portrait.ico" rel="bookmark" type="image/x-icon" />
     		<link href="images/head_portrait.jpg" mce_href="images/head_portrait.ico" rel="icon" type="image/x-icon" />
     		<link href="images/head_portrait.jpg" mce_href="images/head_portrait.ico" rel="shortcut icon" type="image/x-icon" />
+	                <link rel="icon" type="image/ico" href="//sdn.geekzu.org/avatar/4cc893d113dd74ceca73f9863f2c5446/">
+	                <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css">
+                                <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/5.12.1/css/all.min.css">
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
 		<link rel="stylesheet" href="assets/css/main.css" />
-		<video controls="" autoplay="" name="media"> <source src="mengzhan.mp3" type="audio/mpeg"></video>
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+    <script>
+        // 音乐设置
+        let meting_music_api = "https://api.mizore.cn/meting/api.php";// meting api
+        let music_server = "netease"; // 音乐服务：网易云 netease 参见 meting api支持的服务
+        let music_type = "playlist"; // 歌曲类型：歌单playlist 单首歌曲 song  专辑 album
+        let music_id = "3002783466"; // 歌单ID或歌曲ID或者专辑ID 20173709 29732992
+        let music_order = "random"; // 音频循环顺序, 顺序播放： 'list', 随机播放：'random'
+        let music_mini = false; // mini模式 吸底模式开启后此选项实效 true / false
+        let music_fixed = false; // 吸底模式
+        let music_volume = 0.7; // 默认音量
+        let music_autoplay = false; // 自动播放
+        let music_loop = "all"; // 音频循环播放, 可选值: 'all', 'one', 'none' ，分别为全部循环，单曲循环，不循环
+        // 一言设置    
+    </script>
 	</head>
+<bgsound src="mengzhan.mp3" autostart="true" loop="true">
 	<body class="landing">
+    <!-- 网页鼠标点击特效（爱心） -->
+    <script type="text/javascript">
+         ! function (e, t, a) {
+            function r() {
+                for (var e = 0; e < s.length; e++) s[e].alpha <= 0 ? (t.body.removeChild(s[e].el), s.splice(e, 1)) : (s[
+                        e].y--, s[e].scale += .004, s[e].alpha -= .013, s[e].el.style.cssText = "left:" + s[e].x +
+                    "px;top:" + s[e].y + "px;opacity:" + s[e].alpha + ";transform:scale(" + s[e].scale + "," + s[e]
+                    .scale + ") rotate(45deg);background:" + s[e].color + ";z-index:99999");
+                requestAnimationFrame(r)
+            }
+ 
+            function n() {
+                var t = "function" == typeof e.onclick && e.onclick;
+                e.onclick = function (e) {
+                    t && t(), o(e)
+                }
+            }
+ 
+            function o(e) {
+                var a = t.createElement("div");
+                a.className = "heart", s.push({
+                    el: a,
+                    x: e.clientX - 5,
+                    y: e.clientY - 5,
+                    scale: 1,
+                    alpha: 1,
+                    color: c()
+                }), t.body.appendChild(a)
+            }
+ 
+            function i(e) {
+                var a = t.createElement("style");
+                a.type = "text/css";
+                try {
+                    a.appendChild(t.createTextNode(e))
+                } catch (t) {
+                    a.styleSheet.cssText = e
+                }
+                t.getElementsByTagName("head")[0].appendChild(a)
+            }
+ 
+            function c() {
+                return "rgb(" + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + "," + ~~(255 * Math
+                    .random()) + ")"
+            }
+            var s = [];
+            e.requestAnimationFrame = e.requestAnimationFrame || e.webkitRequestAnimationFrame || e
+                .mozRequestAnimationFrame || e.oRequestAnimationFrame || e.msRequestAnimationFrame || function (e) {
+                    setTimeout(e, 1e3 / 60)
+                }, i(
+                    ".heart{width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);}.heart:after,.heart:before{content: '';width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: fixed;}.heart:after{top: -5px;}.heart:before{left: -5px;}"
+                ), n(), r()
+        }(window, document);
+    </script>
 		<div id="page-wrapper">
 
 			<!-- Header -->
 				<header id="header">
-					<h1 id="logo"><a href="awa">个人主页</a></h1>
+					<h1 id="logo"><a href="#">个人主页</a></h1>
 					<nav id="nav">
 						<ul>
+                                <li><a href="./categories.html">相关网站<span class="arrow_carrot-down"></span></a>
+                                    <ul class="dropdown">
 							<li><a href="https://github.com/Qiumingskj">Github</a></li>
 							<li><a href="https://user.qzone.qq.com/1782764161/infocenter">QQ空间</a>
 					        <li><a href="https://space.bilibili.com/1604605786?spm_id_from=333.1296.0.0">B站</a></li>
+							<li><a href="https://hc.qiunaruto.top">火影社</a></li>
+							<li><a href="https://qncd.qiunaruto.top">MCQNPC</a>
+                                    </ul>
 							<li><a href="1782764161" target="_blank" class="button special">加QQ</a></li>
 						</ul>
 					</nav>
 				</header>
-
 			<!-- Banner -->
 				<section id="banner">
 					<div class="content">
 						<header>
-							<h2>秋ナルト</h2>
-							<p>七代目火影<br />
-							木叶飞舞之处，火の意志不息</p>
+							<h2>うずまき ナルト</h2>
+							<p>&#128516;Seventh Hokage<br />
+							&#10024;木の葉の舞うところに<br />
+							火の意志は絶えない&#10024;</p>
 						</header>
 						<span class="image"><img src="images/head_portrait.jpg" alt="秋鸣" /></span>
 					</div>
 					<a href="#one" class="goto-next scrolly">Next</a>
 				</section>
-
+                <!-- <audio muted></audio> -->
+                <div id="aplayer-inner" class="aplayer"></div>
+    <!-- aplayer -->
+    <div id="aplayer-fixed"  class="aplayer"></div>
+    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+    <script src="./static/APlayer-1.10.1/dist/APlayer.min.js"></script>
+    <script src="./static/Meting.min.js"></script>
+    <!-- end_aplayer -->
+    <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+    <script defer src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script src="./static/layer-v3.5.1/layer/layer.js"></script>
+    <!-- <script src="./static/main.js"></script> -->
+    <script src="./static/main.js"></script>
+    <script>
+        //弹出一个页面层
+        $('#kaygb-blog').on('click', function() {
+            layer.open({
+                type: 2,                
+	position: fixed,
+                title: 'Blog',
+                shadeClose: true,
+                anim:4,
+                closeBtn: 2,
+                isOutAnim: false,
+                area: ['80%', '90%'],
+                content: '//www.aiazt.net/'
+            });
+        });
+        $('#kaygb-mail').on('click', function() {
+            layer.open({
+                type: 2,
+	position: fixed,
+                title: 'Blog',
+                shadeClose: true,
+                anim:4,
+                closeBtn: 2,
+                isOutAnim: false,
+                area: ['80%', '90%'],
+                content: '//mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=hi@aiazt.net'
+            });
+        });
+    </script>
+						</header>
+						</div>
 			<!-- One -->
 				<section id="one" class="spotlight style1 bottom">
-					<span class="image fit main"><img src="images/pic001.jpg" alt="关于我の一些秘密" /></span>
+					<span class="image fit main"><img src="images/pic001.gif" alt="关于我の一些秘密" /></span>
 					<div class="content">
 						<div class="container">
 							<div class="row">
 								<div class="4u 12u$(medium)">
 									<header>
-										<h2>关于我の一些秘密</h2>
-										<p>孤独的世界,我从没抗拒.</p>
+										<h2>&#127754;关于我の一些秘密</h2>
+										<p>Honest | 孤独的世界,我从没抗拒.</p>
 									</header>
 								</div>
 								<div class="4u 12u$(medium)">
-									<p>没人看的介绍：
-									<br />一名优秀的Minecraft,火影玩家
+									<p>&#127769;没人看的简介 >>	
+									<br />一只吃三连长大のUP主
+									<br />一条实力派raper咸鱼佬
+									<br />一坨优秀的bug制造程序猿
+									<br />一个热爱理学的高学历man
 									</p>
 								</div>
 								<div class="4u$ 12u$(medium)">
 									<p>我の特长
-									<br />喜爱编程，会Python,Java,C++但是C,html,css,docter.sql一个不会
-									<br />努力学习的我.热爱读书,国学经典看得多,你可以和我交流哦
-									<br />我也是个热爱篮球的人，练习了2坤年
-                                    <br />同时也会剪辑，写作哦！
+									<br />喜爱计算机信息技术，会28+种编程语言，150+类硬软件操作
+									<br />望向梦想的数理化上帝语言的地方，那是王的故乡
+									<br />小会俄语，法语，英语，文言文。日语等多国或古老语言
+                                    							<br />同时也会剪辑，写作，音乐制作哦！（不然也不会是UP嘛）
                                     </p>
 								</div>
 							</div>
@@ -79,9 +228,9 @@
 				<section id="two" class="spotlight style2 right">
 					<span class="image fit main"><img src="images/pic002.jpg" alt="" /></span>
 					<div class="content">
+							<h2>Resource | 我の我的世界客户端&#128124;</h2>
 						<header>
-							<h2我のMineCraft客户端</h2>
-							<p>一个非常不错的MineCraftPVP客户端!</p>！
+							<p>一个FPS++のPVP客户端!</p>
 						</header>
 						<p>
 						99+PVPmod&优化mod以及众多玩法
@@ -95,17 +244,28 @@
 
 			<!-- Three -->
 				<section id="three" class="spotlight style3 left">
-					<span class="image fit main bottom"><img src="images/pic003.jpg" alt="" /></span>
+					<span class="image fit main bottom"><img src="images/pic003.gif" alt="" /></span>
 					<div class="content">
 						<header>
-							<h2>我の游戏群</h2>
-							<p>QQ群1:601943029【mc]</p>
-							<p>QQ群2:834541611【火影]</p>
+							<h2>Game | 我の游戏群</h2>
+							<p>&#127930; | 一起玩，来吧！ </p>
 						</header>
-						<p>阿巴阿巴 </p>
-						<p>让我们交一个朋友吧 </p>
-						<ul class="actions">
-							<li><a href="https://space.bilibili.com/1604605786?spm_id_from=333.1296.0.0" target="_blank" class="button">点击来看看我的B站</a></li>
+						<p>
+						<p>Q群1 | 601943029「我的世界」    
+						<br />Q群2 | 188511369「火影忍者」</p>
+						<ul class="actions">	
+							<li><a id="copy-button" class="button">点击复制</a></li>
+						<script>
+						  const copyButton = document.querySelector('#copy-button');
+						  copyButton.addEventListener('click', () => {
+						    const textarea = document.createElement('textarea');
+						    textarea.value = 'Q群1 | 601943029「我的世界」Q群2 | 188511369「火影忍者」';
+						    document.body.appendChild(textarea);
+						    textarea.select();
+						    document.execCommand('copy');
+						    textarea.remove();
+						  });
+						</script>
 						</ul>
 					</div>
 					<a href="#four" class="goto-next scrolly">Next</a>
@@ -115,25 +275,30 @@
 				<section id="four" class="wrapper style1 special fade-up">
 					<div class="container">
 						<header class="major">
-							<h2>l另外一些小秘密</h2>
-							<p>可以交个朋友么</p>
+							<h2>Others l 另外一些小秘密</h2>
+							<p>敞开心扉的说</p>
 						</header>
 						<div class="box alt">
 							<div class="row uniform">
 								<section class="4u 6u(medium) 12u$(xsmall)">
 									<span class="icon alt major fa-area-chart"></span>
 									<h3>喜爱看</h3>
-									<p>火影忍者,一拳超人，我与世界[均为日漫哦]</p>
+									<p>火影忍者
+									<br />一拳超人
+									<br />流浪地球</p>
 								</section>
 								<section class="4u 6u$(medium) 12u$(xsmall)">
 									<span class="icon alt major fa-comment"></span>
 									<h3>喜欢说</h3>
-									<p>你觉得我喜欢说什么呢</p>
+									<p>"Facing difficulties and
+									 <br />climbing to the summit"</p>
 								</section>
 								<section class="4u$ 6u(medium) 12u$(xsmall)">
 									<span class="icon alt major fa-flask"></span>
 									<h3>喜欢玩</h3>
-									<p>去上面找找?</p>
+									<p>我的世界
+									<br />火影忍者
+									<br />魔方</p>
 								</section>
 					
 									
@@ -146,25 +311,23 @@
 				<section id="five" class="wrapper style2 special fade">
 					<div class="container">
 						<header>
-							<h2>我の详情</h2>
+							<h2>Meet | 我の详情</h2>
 							<p>这是我的更详细的联系方式.</p>
 						</header>
 						</div>
 		
-					<p>邮箱：qiuming123@QQ.com</p>
-				    <p>QQ：1782764161</p>
-                    <audio autoplay="autoplay"><source src="/mengzhan.mp3" type="audio/mpeg" /></audio>
+					<p>邮箱：qiuming123@qq.com
+				    <br />QQ：1782764161</p>
 					</div>
 				</section>
-
 			<!-- Footer -->
 				<footer id="footer">
 					<ul class="icons">
-						<!--<li><a href="#" class="icon alt fa-twitter"><span class="label">Twitter</span></a></li>-->
+						<!--<li><a href="https://github.com/Qiumingskj" class="icon alt fa-twitter"><span class="label">Twitter</span></a></li>-->
 						
 					</ul>
 					<ul class="copyright">
-						<li>&copy; Do you like van youxi</li><li>Design: <a href="https://github.com/Qiumingskj">GaGaGaGa</a></li>
+						<li>&copy; ICU备案:京ICP备2020103142号-2 | By <a href="https://github.com/Qiumingskj">Qiu_Naruto </a></li>
 						
 					</ul>
 				</footer>
@@ -180,5 +343,124 @@
 			<script src="assets/js/util.js"></script>
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 			<script src="assets/js/main.js"></script>
-
+			<script src="js/rainyday.js"></script>
+    <script>
+      "use strict";
+ 
+      var canvas = document.querySelector("canvas");
+      var c = canvas.getContext("2d");
+ 
+      canvas.width = innerWidth;
+      canvas.height = innerHeight;
+ 
+      var mouse = {
+        x: innerWidth / 2,
+        y: innerHeight / 2 - 80,
+      };
+ 
+      var colors = ["#00bdff", "#4d39ce", "#088eff"];
+ 
+      addEventListener("mousemove", function (event) {
+        mouse.x = event.clientX;
+        mouse.y = event.clientY;
+      });
+ 
+      addEventListener("resize", function () {
+        canvas.width = innerWidth;
+        canvas.height = innerHeight;
+ 
+        init();
+      });
+ 
+      function randomIntFromRange(min, max) {
+        return Math.floor(Math.random() * (max - min + 1) + min);
+      }
+ 
+      function randomColor(colors) {
+        return colors[Math.floor(Math.random() * colors.length)];
+      }
+ 
+      function Particle(x, y, radius, color) {
+        var _this = this;
+ 
+        var distance = randomIntFromRange(50, 120);
+        this.x = x;
+        this.y = y;
+        this.radius = radius;
+        this.color = color;
+        this.radians = Math.random() * Math.PI * 2;
+        this.velocity = 0.05;
+        this.distanceFromCenter = {
+          x: distance,
+          y: distance,
+        };
+        this.prevDistanceFromCenter = {
+          x: distance,
+          y: distance,
+        };
+        this.lastMouse = { x: x, y: y };
+ 
+        this.update = function () {
+          var lastPoint = { x: _this.x, y: _this.y };
+          _this.radians += _this.velocity;
+ 
+          _this.lastMouse.x += (mouse.x - _this.lastMouse.x) * 0.05;
+          _this.lastMouse.y += (mouse.y - _this.lastMouse.y) * 0.05;
+ 
+          _this.distanceFromCenter.x =
+            _this.prevDistanceFromCenter.x + Math.sin(_this.radians) * 100;
+          _this.distanceFromCenter.y =
+            _this.prevDistanceFromCenter.x + Math.sin(_this.radians) * 100;
+ 
+          _this.x =
+            _this.lastMouse.x +
+            Math.cos(_this.radians) * _this.distanceFromCenter.x;
+          _this.y =
+            _this.lastMouse.y +
+            Math.sin(_this.radians) * _this.distanceFromCenter.y;
+ 
+          _this.draw(lastPoint);
+        };
+ 
+        this.draw = function (lastPoint) {
+          c.beginPath();
+          c.strokeStyle = _this.color;
+          c.lineWidth = _this.radius;
+          c.moveTo(lastPoint.x, lastPoint.y);
+          c.lineTo(_this.x, _this.y);
+          c.stroke();
+          c.closePath();
+        };
+      }
+ 
+      var particles = undefined;
+      function init() {
+        particles = [];
+ 
+        for (var i = 0; i < 50; i++) {
+          var radius = Math.random() * 2 + 1;
+          particles.push(
+            new Particle(
+              canvas.width / 2,
+              canvas.height / 2,
+              radius,
+              randomColor(colors)
+            )
+          );
+        }
+      }
+ 
+      function animate() {
+        requestAnimationFrame(animate);
+        c.fillStyle = "rgba(255, 255, 255, 0.05)";
+        c.fillRect(0, 0, canvas.width, canvas.height);
+ 
+        particles.forEach(function (particle) {
+          particle.update();
+        });
+      }
+ 
+      init();
+      animate();
+    </script>
 	</body>
