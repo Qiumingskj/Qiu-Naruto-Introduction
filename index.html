@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>	    
-<title>&#9924;秋ナルト 个人主页&#9924;</title>
+<title>&#9924;うずまき 个人主页&#9924;</title>
 <meta name="keywords" content="我的个人主页">
 <meta name="description" content="我的个人主页 ">
         <script src="js/rainyday.min.js"></script>
@@ -114,22 +114,153 @@
                 ), n(), r()
         }(window, document);
     </script>
+    <span class="js-cursor-container"></span>
+    <script>
+        (function fairyDustCursor() {
+ 
+            var possibleColors = ["#D61C59", "#E7D84B", "#1B8798"]
+            var width = window.innerWidth;
+            var height = window.innerHeight;
+            var cursor = { x: width / 2, y: width / 2 };
+            var particles = [];
+ 
+            function init() {
+                bindEvents();
+                loop();
+            }
+ 
+           
+            function bindEvents() {
+                document.addEventListener('mousemove', onMouseMove);
+                window.addEventListener('resize', onWindowResize);
+            }
+ 
+            function onWindowResize(e) {
+                width = window.innerWidth;
+                height = window.innerHeight;
+            }
+ 
+            function onMouseMove(e) {
+                cursor.x = e.clientX;
+                cursor.y = e.clientY;
+ 
+                addParticle(cursor.x, cursor.y, possibleColors[Math.floor(Math.random() * possibleColors.length)]);
+            }
+ 
+            function addParticle(x, y, color) {
+                var particle = new Particle();
+                particle.init(x, y, color);
+                particles.push(particle);
+            }
+ 
+            function updateParticles() {
+ 
+                
+                for (var i = 0; i < particles.length; i++) {
+                    particles[i].update();
+                }
+ 
+               
+                for (var i = particles.length - 1; i >= 0; i--) {
+                    if (particles[i].lifeSpan < 0) {
+                        particles[i].die();
+                        particles.splice(i, 1);
+                    }
+                }
+ 
+            }
+ 
+            function loop() {
+                requestAnimationFrame(loop);
+                updateParticles();
+            }
+ 
+          
+ 
+            function Particle() {
+ 
+                this.character = "*";
+                this.lifeSpan = 120; //ms
+                this.initialStyles = {
+                    "position": "fixed",
+                    "display": "inline-block",
+                    "top": "0px",
+                    "left": "0px",
+                    "pointerEvents": "none",
+                    "touch-action": "none",
+                    "z-index": "10000000",
+                    "fontSize": "25px",
+                    "will-change": "transform"
+                };
+ 
+              
+                this.init = function (x, y, color) {
+ 
+                    this.velocity = {
+                        x: (Math.random() < 0.5 ? -1 : 1) * (Math.random() / 2),
+                        y: 1
+                    };
+ 
+                    this.position = { x: x + 10, y: y + 10 };
+                    this.initialStyles.color = color;
+ 
+                    this.element = document.createElement('span');
+                    this.element.innerHTML = this.character;
+                    applyProperties(this.element, this.initialStyles);
+                    this.update();
+ 
+                    document.querySelector('.js-cursor-container').appendChild(this.element);
+                };
+ 
+                this.update = function () {
+                    this.position.x += this.velocity.x;
+                    this.position.y += this.velocity.y;
+                    this.lifeSpan--;
+ 
+                    this.element.style.transform = "translate3d(" + this.position.x + "px," + this.position.y + "px, 0) scale(" + (this.lifeSpan / 120) + ")";
+                }
+ 
+                this.die = function () {
+                    this.element.parentNode.removeChild(this.element);
+                }
+ 
+            }
+ 
+           
+            function applyProperties(target, properties) {
+                for (var key in properties) {
+                    target.style[key] = properties[key];
+                }
+            }
+ 
+            if (!('ontouchstart' in window || navigator.msMaxTouchPoints)) init();
+        })();    
+    </script>
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/gh/Fuukei/Public_Repository@latest/static/js/sakura-less.js"></script>
 		<div id="page-wrapper">
-
 			<!-- Header -->
 				<header id="header">
-					<h1 id="logo"><a href="#">个人主页</a></h1>
+					<h1 id="logo"><a href="#">&#10025; うずまき 个人主页 &#10025;</a></h1>
 					<nav id="nav">
 						<ul>
-                                <li><a href="./categories.html">相关网站<span class="arrow_carrot-down"></span></a>
+                                <li><a href="">社交媒体<span class="arrow_carrot-down"></span></a>
                                     <ul class="dropdown">
 							<li><a href="https://github.com/Qiumingskj">Github</a></li>
 							<li><a href="https://user.qzone.qq.com/1782764161/infocenter">QQ空间</a>
-					        <li><a href="https://space.bilibili.com/1604605786?spm_id_from=333.1296.0.0">B站</a></li>
+					        		<li><a href="https://space.bilibili.com/1604605786/">B站</a></li>
+						</ul>
+                                <li><a href="">相关网站<span class="arrow_carrot-down"></span></a>
+                                    <ul class="dropdown">
 							<li><a href="https://hc.qiunaruto.top">火影社</a></li>
 							<li><a href="https://qncd.qiunaruto.top">MCQNPC</a>
                                     </ul>
-							<li><a href="1782764161" target="_blank" class="button special">加QQ</a></li>
+                                <li><a href="" target="_blank">联系方式<span class="arrow_carrot-down"></span></a>				
+                                    <ul class="dropdown">
+							<li><a href="">QQ | 1782764161</a>
+					        		<li><a href="">微信 | Greasdfty</a></li>
+							<li><a href="">手机 | 13700618675</a></li>
+							<li><a href="">邮箱 | qiuming123@qq.com</a>
 						</ul>
 					</nav>
 				</header>
@@ -138,7 +269,7 @@
 					<div class="content">
 						<header>
 							<h2>うずまき ナルト</h2>
-							<p>&#128516;Seventh Hokage<br />
+							<p>|  Seventh Hokage &#128516;<br />
 							&#10024;木の葉の舞うところに<br />
 							火の意志は絶えない&#10024;</p>
 						</header>
@@ -146,48 +277,6 @@
 					</div>
 					<a href="#one" class="goto-next scrolly">Next</a>
 				</section>
-                <!-- <audio muted></audio> -->
-                <div id="aplayer-inner" class="aplayer"></div>
-    <!-- aplayer -->
-    <div id="aplayer-fixed"  class="aplayer"></div>
-    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
-    <script src="./static/APlayer-1.10.1/dist/APlayer.min.js"></script>
-    <script src="./static/Meting.min.js"></script>
-    <!-- end_aplayer -->
-    <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
-    <script defer src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
-    <script src="./static/layer-v3.5.1/layer/layer.js"></script>
-    <!-- <script src="./static/main.js"></script> -->
-    <script src="./static/main.js"></script>
-    <script>
-        //弹出一个页面层
-        $('#kaygb-blog').on('click', function() {
-            layer.open({
-                type: 2,                
-	position: fixed,
-                title: 'Blog',
-                shadeClose: true,
-                anim:4,
-                closeBtn: 2,
-                isOutAnim: false,
-                area: ['80%', '90%'],
-                content: '//www.aiazt.net/'
-            });
-        });
-        $('#kaygb-mail').on('click', function() {
-            layer.open({
-                type: 2,
-	position: fixed,
-                title: 'Blog',
-                shadeClose: true,
-                anim:4,
-                closeBtn: 2,
-                isOutAnim: false,
-                area: ['80%', '90%'],
-                content: '//mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=hi@aiazt.net'
-            });
-        });
-    </script>
 						</header>
 						</div>
 			<!-- One -->
@@ -236,7 +325,7 @@
 						99+PVPmod&优化mod以及众多玩法
 						<br />给你最好的PVP客户端，最棒的PVP体验！
 						<ul class="actions">
-							<li><a href="https://qncd.qiunaruto.top" class="button">点击前往官网</a></li>
+							<li><a href="https://qncd.qiunaruto.top" class="button">点击前往</a></li>
 						</ul>
 					</div>
 					<a href="#three" class="goto-next scrolly">Next</a>
@@ -271,7 +360,24 @@
 					<a href="#four" class="goto-next scrolly">Next</a>
 				</section>
 
-			<!-- Four -->
+			<!-- Five -->
+				<section id="two" class="spotlight style10 right">
+					<span class="image fit main"><img src="images/pic004.jpg" alt="" /></span>
+					<div class="content">
+							<h2>Community | 火影社&#128211;</h2>
+						<header>
+							<p>火影迷必备宝藏网站，由个人手动搭建，完全免费</p>
+						</header>
+						<p>
+						还在为找不到火影忍者有关的视频看而发愁吗？
+						<br />来这里，都有你想看！
+						<ul class="actions">
+							<li><a href="https://hc.qiunaruto.top" class="button">点击前往</a></li>
+						</ul>
+					</div>
+					<a href="#three" class="goto-next scrolly">Next</a>
+				</section>
+			<!-- Six -->
 				<section id="four" class="wrapper style1 special fade-up">
 					<div class="container">
 						<header class="major">
@@ -281,45 +387,129 @@
 						<div class="box alt">
 							<div class="row uniform">
 								<section class="4u 6u(medium) 12u$(xsmall)">
-									<span class="icon alt major fa-area-chart"></span>
+									<span class=""><img src="images/pr3.png" alt="" /></span>
 									<h3>喜爱看</h3>
 									<p>火影忍者
 									<br />一拳超人
 									<br />流浪地球</p>
 								</section>
 								<section class="4u 6u$(medium) 12u$(xsmall)">
-									<span class="icon alt major fa-comment"></span>
+									<span class=""><img src="images/pr2.png" alt="" /></span>
 									<h3>喜欢说</h3>
 									<p>"Facing difficulties and
 									 <br />climbing to the summit"</p>
 								</section>
 								<section class="4u$ 6u(medium) 12u$(xsmall)">
-									<span class="icon alt major fa-flask"></span>
+									<span class=""><img src="images/pr1.png" alt="" /></span>
 									<h3>喜欢玩</h3>
 									<p>我的世界
 									<br />火影忍者
 									<br />魔方</p>
+								</section>					
+				<!-- Seven -->
+				<section id="four" class="wrapper style3 special fade-up">
+					<div class="container">
+						<header class="majora">
+							<h2>Comment l 社交媒体</h2>
+							<p>Good For Communicating</p>
+						</header>
+						<div class="box alt">
+							<div class="row uniform">
+								<section class="4u 6u(medium) 12u$(xsmall)">
+									<span class=""><img src="images/Github.png" alt="" /></span>
+									<h3><a href="https://github.com/Qiumingskj">Github</a></h3>
 								</section>
-					
-									
-					
+								<section class="4u 6u$(medium) 12u$(xsmall)">
+									<span class=""><img src="images/B.png" alt="" /></span>
+									<h3><a href="https://space.bilibili.com/1604605786/">BiliBili</a></h3>
+								</section>
+								<section class="4u$ 6u(medium) 12u$(xsmall)">
+									<span class=""><img src="images/qx.png" alt="" /></span>
+									<h3><a href="https://xsj.qq.com/">QQ小世界</a></h3>
+								</section>			
 						</footer>
 					</div>
 				</section>
-
-			<!-- Five -->
-				<section id="five" class="wrapper style2 special fade">
+			<!-- Fives -->
+				<section id="five">
 					<div class="container">
 						<header>
-							<h2>Meet | 我の详情</h2>
-							<p>这是我的更详细的联系方式.</p>
+							<h2>Video | 最新社交媒体动态</h2>
+							<p>How's everything going!</p>
+							<div style="position: relative; padding: 30% 45%;">
+							<iframe style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;"  src="http://circlevideo2.photo.qq.com/50040_0b53gnbbw2qahmaj6hkgifsxqm6ddozabska.f101000.mp4?cvkey=kS8qmAHF4ocw1GFoiRuB19ogo8QvV3R8AEv5XIoGje3chIvgVcVM3NOorQrzzi0LxLmZ92gUkK%2BpwV5Fg5X2VPalScjPdpshTMEBmYMDcB3T%2B6TPvU%2BVJUtkmDodaXT1&dis_k=3dc8440d6f5c43fd72fa98a6e7515810&dis_t=1699769108&traceid=1782764161_1112060508_46540&vuin=9c092ecf3169370b" frameborder="no" scrolling="no"></iframe>
+							</div>	
 						</header>
-						</div>
-		
-					<p>邮箱：qiuming123@qq.com
-				    <br />QQ：1782764161</p>
-					</div>
 				</section>
+			<!-- Fivess -->
+				<section id="five">
+					<div class="container">
+						<header>
+							<h2>Music | 私人音乐雷达</h2>
+							<p>Boching muu...</p>
+                <!-- <audio muted></audio> -->
+                <div id="aplayer-inner" class="aplayer"></div>
+    <!-- aplayer -->
+    <div id="aplayer-fixed"  class="aplayer"></div>
+    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+    <script src="./static/APlayer-1.10.1/dist/APlayer.min.js"></script>
+    <script src="./static/Meting.min.js"></script>
+    <!-- end_aplayer -->
+    <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+    <script defer src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script src="./static/layer-v3.5.1/layer/layer.js"></script>
+    <!-- <script src="./static/main.js"></script> -->
+    <script src="./static/main.js"></script>
+    <script>
+        //弹出一个页面层
+        $('#kaygb-blog').on('click', function() {
+            layer.open({
+                type: 2,                
+	position: fixed,
+                title: 'Blog',
+                shadeClose: true,
+                anim:4,
+                closeBtn: 2,
+                isOutAnim: false,
+                area: ['80%', '90%'],
+                content: '//www.aiazt.net/'
+            });
+        });
+        $('#kaygb-mail').on('click', function() {
+            layer.open({
+                type: 2,
+	position: fixed,
+                title: 'Blog',
+                shadeClose: true,
+                anim:4,
+                closeBtn: 2,
+                isOutAnim: false,
+                area: ['80%', '90%'],
+                content: '//mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=hi@aiazt.net'
+            });
+        });
+    </script>
+							<h2> </h2>
+							<h2> </h2>
+						</header>
+					<div>
+					</div>
+					</footer>	
+				</section>
+			<!-- Five -->
+					<div class="container">
+				<footer id="footer">
+						<header>
+							<h2> </h2>
+							<h2>Meet | 我の详情</h2>
+							<p>这是我的更详细的联系方式</p>
+						</header>
+							<p>|<img src="images/QQ.png" alt="" />  1782764161      |<img src="images/微信.png" alt="" />  Greasdfty      |<img src="images/手机.png" alt="" />  13700618675 |<img src="images/qqe.png" alt="" />  qiuming123@qq.com      |</p>	
+					</div>				
+					</div>
+				</footer>
+				</section>
+
 			<!-- Footer -->
 				<footer id="footer">
 					<ul class="icons">
@@ -344,123 +534,4 @@
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 			<script src="assets/js/main.js"></script>
 			<script src="js/rainyday.js"></script>
-    <script>
-      "use strict";
- 
-      var canvas = document.querySelector("canvas");
-      var c = canvas.getContext("2d");
- 
-      canvas.width = innerWidth;
-      canvas.height = innerHeight;
- 
-      var mouse = {
-        x: innerWidth / 2,
-        y: innerHeight / 2 - 80,
-      };
- 
-      var colors = ["#00bdff", "#4d39ce", "#088eff"];
- 
-      addEventListener("mousemove", function (event) {
-        mouse.x = event.clientX;
-        mouse.y = event.clientY;
-      });
- 
-      addEventListener("resize", function () {
-        canvas.width = innerWidth;
-        canvas.height = innerHeight;
- 
-        init();
-      });
- 
-      function randomIntFromRange(min, max) {
-        return Math.floor(Math.random() * (max - min + 1) + min);
-      }
- 
-      function randomColor(colors) {
-        return colors[Math.floor(Math.random() * colors.length)];
-      }
- 
-      function Particle(x, y, radius, color) {
-        var _this = this;
- 
-        var distance = randomIntFromRange(50, 120);
-        this.x = x;
-        this.y = y;
-        this.radius = radius;
-        this.color = color;
-        this.radians = Math.random() * Math.PI * 2;
-        this.velocity = 0.05;
-        this.distanceFromCenter = {
-          x: distance,
-          y: distance,
-        };
-        this.prevDistanceFromCenter = {
-          x: distance,
-          y: distance,
-        };
-        this.lastMouse = { x: x, y: y };
- 
-        this.update = function () {
-          var lastPoint = { x: _this.x, y: _this.y };
-          _this.radians += _this.velocity;
- 
-          _this.lastMouse.x += (mouse.x - _this.lastMouse.x) * 0.05;
-          _this.lastMouse.y += (mouse.y - _this.lastMouse.y) * 0.05;
- 
-          _this.distanceFromCenter.x =
-            _this.prevDistanceFromCenter.x + Math.sin(_this.radians) * 100;
-          _this.distanceFromCenter.y =
-            _this.prevDistanceFromCenter.x + Math.sin(_this.radians) * 100;
- 
-          _this.x =
-            _this.lastMouse.x +
-            Math.cos(_this.radians) * _this.distanceFromCenter.x;
-          _this.y =
-            _this.lastMouse.y +
-            Math.sin(_this.radians) * _this.distanceFromCenter.y;
- 
-          _this.draw(lastPoint);
-        };
- 
-        this.draw = function (lastPoint) {
-          c.beginPath();
-          c.strokeStyle = _this.color;
-          c.lineWidth = _this.radius;
-          c.moveTo(lastPoint.x, lastPoint.y);
-          c.lineTo(_this.x, _this.y);
-          c.stroke();
-          c.closePath();
-        };
-      }
- 
-      var particles = undefined;
-      function init() {
-        particles = [];
- 
-        for (var i = 0; i < 50; i++) {
-          var radius = Math.random() * 2 + 1;
-          particles.push(
-            new Particle(
-              canvas.width / 2,
-              canvas.height / 2,
-              radius,
-              randomColor(colors)
-            )
-          );
-        }
-      }
- 
-      function animate() {
-        requestAnimationFrame(animate);
-        c.fillStyle = "rgba(255, 255, 255, 0.05)";
-        c.fillRect(0, 0, canvas.width, canvas.height);
- 
-        particles.forEach(function (particle) {
-          particle.update();
-        });
-      }
- 
-      init();
-      animate();
-    </script>
 	</body>

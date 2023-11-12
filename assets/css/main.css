@@ -2189,6 +2189,12 @@
 		text-align: center;
 	}
 
+	header.majora {
+		margin: 0 0 4em 0;
+		position: relative;
+		text-align: center;
+	}
+
 		header.major:after {
 			background: #76becc;
 			content: '';
@@ -2198,7 +2204,20 @@
 			width: 75%;
 		}
 
+		header.majora:after {
+			background: #76ccaf;
+			content: '';
+			display: inline-block;
+			height: 0.2em;
+			max-width: 20em;
+			width: 75%;
+		}
+
 	footer.major {
+		margin: 4em 0 0 0;
+	}
+
+	footer.majora {
 		margin: 4em 0 0 0;
 	}
 
@@ -3078,6 +3097,10 @@
 
 		.spotlight.style1 .content {
 			border-color: #76becc;
+		}
+
+		.spotlight.style10 .content {
+			border-color: #f1c554;
 		}
 
 		.spotlight.style2 .content {
