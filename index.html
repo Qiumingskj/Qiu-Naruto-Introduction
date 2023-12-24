@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html>
+<html xmlns="http://www.w3.org/1999/html" xmlns="" lang="">
 <head>	    
 <title>&#9924;うずまき 个人主页&#9924;</title>
 <meta name="keywords" content="我的个人主页">
@@ -13,7 +13,7 @@
                         image: this,
                         gravityAngle: Math.PI / 9
                     });
-                    engine.trail = engine.TRAIL_SMUDGE;
+                    engine. Trail = engine.TRAIL_SMUDGE;
                     engine.rain([ [1, 0, 1000], [3, 3, 1] ], 100);
                 };
                 image.crossOrigin = 'anonymous';
@@ -57,6 +57,201 @@
         let music_loop = "all"; // 音频循环播放, 可选值: 'all', 'one', 'none' ，分别为全部循环，单曲循环，不循环
         // 一言设置    
     </script>
+	<style>
+		*,
+        *:before,
+        *:after {
+          box-sizing: border-box;
+        }
+        html,
+        body {
+          color: #FFFFFF;
+          height: 100%;
+          font-family: georgia, sans-serif;
+          -webkit-font-smoothing: antialiased;
+          margin: 0;
+        }
+        .header {
+          margin: 30px;
+          text-align: center;
+        }
+        /* modal open|close controller */
+        #mpo-modal-controller {
+          position: absolute;
+          left: -999em;
+          opacity: 0;
+        }
+        .mpo-modal-open:checked ~ .mpo-modal-wrap {
+          color: #4c4c4c;
+          display: block;
+        }
+        .mpo-modal-open:checked ~ .mpo-modal-wrap:before,
+        .mpo-modal-open:checked ~ .mpo-modal-wrap .mpo-modal-overlay {
+          display: block;
+        }
+        .mpo-modal-close {
+          cursor: pointer;
+          font-size: 35px;
+          font-weight: bold;
+          line-height: 20px;
+          padding: 10px;
+          position: absolute;
+          top: 0;
+          right: 0;
+          z-index: 100;
+        }
+        /* modal */
+        .mpo-modal-wrap {
+          display: none;
+        }
+        .mpo-modal-wrap:before {
+          content: "";
+          display: none;
+          background: rgba(0, 0, 0, 0.8);
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          z-index: 101;
+        }
+        .mpo-modal-overlay {
+          bottom: 0;
+          display: none;
+          left: 0;
+          position: fixed;
+          right: 0;
+          top: 0;
+          z-index: 102;
+        }
+        .mpo-modal-body {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          max-width: 90%;
+          max-height: 90%;
+          padding: 15px 0;
+          background: #fff;
+          border-radius: 0.25em;
+          overflow: hidden;
+          text-align: center;
+          width: 75%;
+          z-index: 103;
+        }
+        .mpo-modal-body p {
+          color: #4c4c4c;
+          text-align: left;
+          line-height: 1.3;
+        }
+        .mpo-modal-content {
+          color: #4c4c4c;
+          margin: 30px 15px 50px;
+          padding: 50px 0 0;
+          position: relative;
+        }
+        .mpo-modal-slide {
+          display: flex;
+          position: absolute;
+          transition: all 0.4s ease-in;
+          width: 100%;
+        }
+        .modal-content-2 {
+          color: #4c4c4c;
+          left: 100%;
+        }
+        .modal-content-3 {
+          color: #4c4c4c;
+          left: 200%;
+        }
+        #modal-content-1:checked ~ .content-1 {
+          color: #4c4c4c;
+          left: 0;
+          overflow: auto;
+          position: relative;
+        }
+        #modal-content-1:checked ~ .content-2 {
+          color: #4c4c4c;
+          left: 100%;
+        }
+        #modal-content-2:checked ~ .content-1 {
+          color: #4c4c4c;
+          left: -100%;
+        }
+        #modal-content-2:checked ~ .content-2 {
+          color: #4c4c4c;
+          left: 0;
+          overflow: auto;
+          position: relative;
+        }
+        #modal-content-2:checked ~ .content-3 {
+          color: #4c4c4c;
+          left: 100%;
+        }
+        #modal-content-3:checked ~ .content-1 {
+          color: #4c4c4c;
+          left: -200%;
+        }
+        #modal-content-3:checked ~ .content-2 {、
+          color: #4c4c4c;
+          left: -100%;
+        }
+        #modal-content-3:checked ~ .content-3 {
+          color: #4c4c4c;
+          left: 0;
+          overflow: auto;
+          position: relative;
+        }
+        .mpo-modal-nav {
+          position: absolute;
+          top: 50px;
+          width: 100%;
+        }
+        .mpo-modal-nav label {
+          position: absolute;
+          background: #f7f7f7;
+          color: #303030;
+          cursor: pointer;
+          display: inline-block;
+          font: 50px Arial;
+          line-height: 45px;
+          height: 50px;
+          width: 80px;
+          padding: 0 30px 0 25px;
+          text-decoration: none;
+          vertical-align: middle;
+          letter-spacing: -7px;
+          text-align: center;
+        }
+        .mpo-modal-nav label.prev-slide {
+          content: '';
+          left: 0;
+        }
+        .mpo-modal-nav label.next-slide {
+          content: '';
+          right: 0;
+        }
+        .btn {
+          background: #fff;
+          border: #555 solid 1px;
+          border-radius: 3px;
+          cursor: pointer;
+          display: inline-block;
+          font-size: 14px;
+          padding: 8px 15px;
+          text-decoration: none;
+          text-align: center;
+          min-width: 60px;
+          position: relative;
+        }
+        @media only screen and (max-width: 767px) {
+          .mpo-modal-body {
+            max-width: 100%;
+            width: 100%;
+            border-radius: 0;
+          }
+        }
+	</style>
 	</head>
 <bgsound src="mengzhan.mp3" autostart="true" loop="true">
 	<body class="landing">
@@ -262,6 +457,8 @@
 							<li><a href="">手机 | 13700618675</a></li>
 							<li><a href="">邮箱 | qiuming123@qq.com</a>
 						</ul>
+						</li>
+						</ul>
 					</nav>
 				</header>
 			<!-- Banner -->
@@ -317,15 +514,91 @@
 				<section id="two" class="spotlight style2 right">
 					<span class="image fit main"><img src="images/pic002.jpg" alt="" /></span>
 					<div class="content">
-							<h2>Resource | 我の我的世界客户端&#128124;</h2>
+							<h2>Resource | 我の资源&#128124;</h2>
 						<header>
-							<p>一个FPS++のPVP客户端!</p>
+							<p>我制作了许多东西捏，而且全免费！</p>
 						</header>
 						<p>
-						99+PVPmod&优化mod以及众多玩法
-						<br />给你最好的PVP客户端，最棒的PVP体验！
+						源码，游戏，动画，漫画
+						<br />点击即下载，无需期待！
 						<ul class="actions">
-							<li><a href="https://qncd.qiunaruto.top" class="button">点击前往</a></li>
+							<li>
+								<label for="mpo-modal-controller" class="button">点击查看</label>
+								<div class="mpo-modal">
+									<input type="checkbox" id="mpo-modal-controller" class="mpo-modal-open" hidden>
+									<div class="mpo-modal-wrap">
+										<label for="mpo-modal-controller" class="mpo-modal-overlay"></label>
+										<div class="mpo-modal-body">
+
+											<label for="mpo-modal-controller" class="mpo-modal-close">&times;</label>
+
+											<input type="radio" name="content-nav" id="modal-content-1" class="modal-radio" checked hidden/>
+											<input type="radio" name="content-nav" id="modal-content-2" class="modal-radio" hidden/>
+											<input type="radio" name="content-nav" id="modal-content-3" class="modal-radio" hidden/>
+
+											<div class="mpo-modal-slide content-1">
+												<div class="mpo-modal-content">
+													<p2><img src="images/MC.jpg" alt="" />MineCraft | PVP客户端</p2>
+													<p>
+														<br>
+														MinecraftのPVP专用客户端，50+功能，90+优化，50+免费装扮
+														<br>
+														| 适用于 [MineCraft国际版1.12.2 1.8.9]
+														<br>
+														<a href="https://github.com/Qiumingskj/QiuNarutoPVPClient/releases/download/%E9%87%8D%E7%BD%AE%E7%89%88/QiuNarutoPVP.ClientsetupV2.release.exe">➢ 点击下载 [1.8.9b7]</a>
+														<br>
+														<a href="https://developer-oss.lanzouc.com/file/?AmQFO1loBzYEDQQ8ADVVOVtkVW1S6gqvUt5WuVezW/kCUgIDWVRV5FWtAPQBswGIWrdQslWhB6oAJ1NkViRXZwIwBXxZNgcIBLYE6gDgVbJbllXmUugKjVL5VrZXvlvRAuUC3FmMVVxVLQAsATwBcFomUDNVYwdpAGJTClZjVzICPwVjWTAHawRhBGoAZ1VgWzRVY1IrCm5SJlZtVzlbbwIxAmVZPVU0VTMAbwFzAXBacFBoVTgHNQA1U2ZWJVdnAjMFfVk1B2oEfQRjAGRVbVs0VWVSPgo9UmxWaVdoW2sCNAJhWTJVNFVnAGMBbAEyWjdQY1U+BzUAYlNgVmlXbgI1BTNZMwdkBDAEfAAuVT1bcVV2UngKe1IwViJXYls+Aj8CZlkzVTFVMgBvAW0BMFomUCFVYwdoAGJTM1Y3V2cCNQViWTQHYARlBGUAYlVjWzdVflIjCi5SM1Y8V3xbZwIyAnNZcVVxVXQAawFkATdaMFBlVTkHMgAxU2NWPFdhAiQFJ1ltByMEbwRhAG1VelswVWNSPQomUmJWaVclW2sCMwJj">➢ 点击下载 [1.12.2BATE]</a>
+													</p>
+
+													<div class="mpo-modal-nav">
+														<label for="modal-content-2" class="next-slide">&#8250;&#8250;</label>
+													</div>
+												</div>
+											</div>
+
+											<div class="mpo-modal-slide content-2">
+												<div class="mpo-modal-content">
+													<p2>MineCraft | PVP材质包</p2>
+													<p>
+														<br>
+														MinecraftのPVP专用材质包，秋鸣经常使用于MC起床战争
+														<br>
+														| 适用于 [MineCraft国际版 1.8.9]
+														<br>
+														<a href="https://developer-oss.lanzouc.com/file/?UDZbZQAxDj8EDVdvCz4Ha1VqAztUKgspAMVS81Y8UpEGoQI5XU5TZlF1AiELKwdpAXsOW15XUAIAJ1sNXGFaOFA7W1cAPw5tBA9XWgu2B61VlwPvVI4LhADgUt1WglIOBigCL11pU3dRIQIyCzYHagE+DlReaFA2ADpbbFw0WmNQY1s0AG4OYgRhVzALeQdgVXwDO1Q+CzsAPlJlVjxSZAY2AmZdJlN3UXcCaQttBzYBaQ44Xi5QYwA2W3JcMVpiUH9baABlDmkEZVc0CzwHMVVpAzVUbws4ADRSN1YzUjEGMQJmXWRTYlE1Am0LZwdnAW8Oal4yUGAANls/XDFaYlBgWyIAJw4zBCJXJwsqB3VVagN0VGILbQA6UmdWPVJjBjcCbF04UzdRIQIgCzYHawE+Dm1ePFBjADBbbVwwWmhQZ1s7AGQOYgRkVy8LcQcgVWkDalR8CzQAN1JyVn9SIwZxAmhdMVMwUTcCZAtsBzEBbQ4yXjdQYwAhWyhcaVorUG1bPwBkDnQEY1cyC28HKFU4Az9UJQs4ADZSYg==">➢ 点击下载 [1.8.9]</a>
+														<br>
+													</p>
+
+													<div class="mpo-modal-nav">
+														<label for="modal-content-1" class="prev-slide">&#8249;&#8249;</label>
+														<label for="modal-content-3" class="next-slide">&#8250;&#8250;</label>
+													</div>
+												</div>
+											</div>
+
+											<div class="mpo-modal-slide content-3">
+												<div class="mpo-modal-content">
+													<p2><img src="images/MC2.jpg" alt="" />火影忍者 | 格斗游戏</p2>
+													<p>
+														<br>
+														基于MugenNEXT的像素火影游戏
+														<br>
+														| 适用于 [win7-win11]
+														<br>
+														<a href="#">开发中...</a>
+													</p>
+
+													<div class="mpo-modal-nav">
+														<label for="modal-content-2" class="prev-slide">&#8249;&#8249;</label>
+													</div>
+												</div>
+											</div>
+
+										</div>
+									</div>
+
+								</div>
+							</li>
 						</ul>
 					</div>
 					<a href="#three" class="goto-next scrolly">Next</a>
@@ -333,7 +606,7 @@
 
 			<!-- Three -->
 				<section id="three" class="spotlight style3 left">
-					<span class="image fit main bottom"><img src="images/pic003.gif" alt="" /></span>
+					<span class="image fit main bottom"><img src="images/pic003.png" alt="" /></span>
 					<div class="content">
 						<header>
 							<h2>Game | 我の游戏群</h2>
@@ -405,7 +678,7 @@
 									<p>我的世界
 									<br />火影忍者
 									<br />魔方</p>
-								</section>					
+								</section>
 				<!-- Seven -->
 				<section id="four" class="wrapper style3 special fade-up">
 					<div class="container">
@@ -426,8 +699,10 @@
 								<section class="4u$ 6u(medium) 12u$(xsmall)">
 									<span class=""><img src="images/qx.png" alt="" /></span>
 									<h3><a href="https://xsj.qq.com/">QQ小世界</a></h3>
-								</section>			
+								</section>
 						</footer>
+					</div>
+						</div>
 					</div>
 				</section>
 			<!-- Fives -->
@@ -437,9 +712,10 @@
 							<h2>Video | 最新社交媒体动态</h2>
 							<p>How's everything going!</p>
 							<div style="position: relative; padding: 30% 45%;">
-							<iframe style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;"  src="//player.bilibili.com/player.html?aid=493021848&bvid=BV1MN411G768&cid=1321779036&p=1" frameborder="no" scrolling="no"></iframe>
+							<iframe style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;"  src="//player.bilibili.com/player.html?aid=622021146&bvid=BV13b4y1j73W&cid=1361089197&p=1" frameborder="no" scrolling="no"></iframe>
 							</div>	
 						</header>
+					</div>
 				</section>
 			<!-- Fivess -->
 				<section id="five">
@@ -447,8 +723,10 @@
 						<header>
 							<h2>Music | 私人音乐雷达</h2>
 							<p>Boching muu...</p>
+							</header>
                 <!-- <audio muted></audio> -->
                 <div id="aplayer-inner" class="aplayer"></div>
+					</div>
     <!-- aplayer -->
     <div id="aplayer-fixed"  class="aplayer"></div>
     <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
@@ -494,20 +772,25 @@
 						</header>
 					<div>
 					</div>
-					</footer>	
+					</footer>
 				</section>
 			<!-- Five -->
-					<div class="container">
+								<div class="content">
+									<div class="container">
 				<footer id="footer">
 						<header>
 							<h2> </h2>
 							<h2>Meet | 我の详情</h2>
 							<p>这是我的更详细的联系方式</p>
 						</header>
-							<p>|<img src="images/QQ.png" alt="" />  1782764161      |<img src="images/微信.png" alt="" />  Greasdfty      |<img src="images/手机.png" alt="" />  13700618675 |<img src="images/qqe.png" alt="" />  qiuming123@qq.com      |</p>	
-					</div>				
+							<p>|<img src="images/QQ.png" alt="" />  1782764161      |<img src="images/微信.png" alt="" />  Greasdfty      |<img src="images/手机.png" alt="" />  13700618675 |<img src="images/qqe.png" alt="" />  qiuming123@qq.com      |</p>
+				</footer>
+					</div>
 					</div>
 				</footer>
+						</div>
+					</div>
+					</div>
 				</section>
 
 			<!-- Footer -->
@@ -535,3 +818,4 @@
 			<script src="assets/js/main.js"></script>
 			<script src="js/rainyday.js"></script>
 	</body>
+</bgsound>
